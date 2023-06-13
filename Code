@@ -1,0 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+
+# Prompt the user to enter the URL of the website to scrape
+url = input("Enter the URL of the website to scrape: ")
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Create a BeautifulSoup object to parse the HTML content
+soup = BeautifulSoup(response.content, 'html.parser')
+
+# Find and extract specific elements from the HTML
+# Customize these lines based on the structure of the website you're scraping
+titles = soup.find_all('h2')  # Extract all <h2> elements
+
+# Print the extracted data
+for title in titles:
+    print(title.text)
